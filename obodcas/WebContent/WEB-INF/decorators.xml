@@ -1,0 +1,14 @@
+<decorators defaultdir="/decorators">
+	<excludes>
+		<!-- <pattern>login.jsp</pattern> -->
+		<pattern>/login.jsp</pattern>
+		<pattern>/login.jsp?r=1</pattern>
+		<pattern>/login.jsp?r=2</pattern>
+		<pattern>/logout.action</pattern>
+		<pattern>*/dimastersviewall.action</pattern>
+	</excludes>
+
+	<decorator name="main" page="/pages/main.jsp">
+		<pattern>/*</pattern>
+	</decorator>
+</decorators>
