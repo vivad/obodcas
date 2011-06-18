@@ -86,8 +86,8 @@ public class DIServiceMenDataEntryDAO {
 					.prepareStatement("insert into rit_servicemen (servicemenid,servicemenarea," 
 							+ "servicementypeid,servicemen,servicedescription,areaofcoverage," 
 							+ "mobile1,mobile2,telephone,address,email1,email2,website,mapdata," 
-							+ "createdby,status,approved,draft) " 
-							+ "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+							+ "createdby,enrolled,status,approved,draft) " 
+							+ "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
 			insertPST.setLong(1, Long.parseLong(enrollmentNo));
 			insertPST.setLong(2, Long.parseLong(strVendorArea));
@@ -117,10 +117,12 @@ public class DIServiceMenDataEntryDAO {
 					.get(DIServiceMenXLSConstants.MAP_DATA));
 			insertPST.setString(15, user);
 			insertPST.setString(16, ServiceMenData
+					.get(DIServiceMenXLSConstants.ENROLLED));
+			insertPST.setString(17, ServiceMenData
 					.get(DIServiceMenXLSConstants.ACTIVE));
 
-			insertPST.setInt(17, approved);
-			insertPST.setInt(18, draft);
+			insertPST.setInt(18, approved);
+			insertPST.setInt(19, draft);
 
 			if (insertPST.executeUpdate() == 1) {
 				logger.info("success");
@@ -164,7 +166,7 @@ public class DIServiceMenDataEntryDAO {
 					+ "smt.servicementype as TYPENAME,sm.servicemenarea," 
 					+ "sm.servicementypeid,sm.servicemen,sm.servicedescription,sm.areaofcoverage," 
 					+ "sm.mobile1,sm.mobile2,sm.telephone,sm.address,sm.email1,sm.email2,sm.website," 
-					+ "sm.mapdata,sm.status " 
+					+ "sm.mapdata,sm.enrolled,sm.status " 
 					+ "from rit_servicemen sm,rit_areamaster am, rit_servicementype smt " 
 					+ "where sm.servicemenid="+serviceMenID+" and sm.servicemenarea=am.areacode " 
 					+ "and sm.servicementypeid=smt.servicementypeid");
@@ -205,6 +207,8 @@ public class DIServiceMenDataEntryDAO {
 						.getString("email2"));
 				serviceMenDetailsMap.put(DIServiceMenXLSConstants.WEBSITE, rs
 						.getString("website"));
+				serviceMenDetailsMap.put(DIServiceMenXLSConstants.ENROLLED, rs
+						.getString("enrolled"));
 				serviceMenDetailsMap.put(DIServiceMenXLSConstants.ACTIVE, rs
 						.getString("status"));
 			}
@@ -239,7 +243,7 @@ public class DIServiceMenDataEntryDAO {
 			updatePST = con
 					.prepareStatement("update rit_servicemen set servicemenarea=?,servicementypeid=?,"
 										+ "servicemen=?,servicedescription=?,areaofcoverage=?,mobile1=?,mobile2=?,"
-										+ "telephone=?,address=?,email1=?,email2=?,website=?,mapdata=?,createdby=?,"
+										+ "telephone=?,address=?,email1=?,email2=?,website=?,mapdata=?,createdby=?,enrolled=?,"
 										+ "status=?,approved=?,draft=? "
 										+ "where servicemenid=?");
 			
@@ -271,12 +275,14 @@ public class DIServiceMenDataEntryDAO {
 					.get(DIServiceMenXLSConstants.MAP_DATA));
 			updatePST.setString(14, user);
 			updatePST.setString(15, serviceMenData
+					.get(DIServiceMenXLSConstants.ENROLLED));
+			updatePST.setString(16, serviceMenData
 					.get(DIServiceMenXLSConstants.ACTIVE));
 
-			updatePST.setInt(16, approved);
-			updatePST.setInt(17, draft);
+			updatePST.setInt(17, approved);
+			updatePST.setInt(18, draft);
 			
-			updatePST.setLong(18, Long.parseLong(enrollmentNo));
+			updatePST.setLong(19, Long.parseLong(enrollmentNo));
 
 			if (updatePST.executeUpdate() == 1) {
 				logger.info("success");
