@@ -25,6 +25,20 @@ public class ApplicationProperties {
 			hm.put(Constants.NO_OF_LINKS_VISIBLE, prop.getProperty(Constants.NO_OF_LINKS_VISIBLE));
 			hm.put(Constants.PAGE_PATH, prop.getProperty(Constants.PAGE_PATH));
 			
+			hm.put(Constants.TE_TEMPLATE_UPLOAD_DEST, prop.getProperty(Constants.TE_TEMPLATE_UPLOAD_DEST));
+			hm.put(Constants.TE_TEMPLATE_VALIDATE_PATH, prop.getProperty(Constants.TE_TEMPLATE_VALIDATE_PATH));
+			hm.put(Constants.TE_TEMPLATE_GENERATE_PATH, prop.getProperty(Constants.TE_TEMPLATE_GENERATE_PATH));
+			
+			hm.put(Constants.VENDOR_XLS_TEMPLATE, prop.getProperty(Constants.VENDOR_XLS_TEMPLATE));
+			hm.put(Constants.SERVICE_CENTER_XLS_TEMPLATE, prop.getProperty(Constants.SERVICE_CENTER_XLS_TEMPLATE));
+			hm.put(Constants.SERVICE_MEN_XLS_TEMPLATE, prop.getProperty(Constants.SERVICE_MEN_XLS_TEMPLATE));
+			
+			
+			hm.put(Constants.UPLOAD_XLS_VENDOR_CONFIG, prop.getProperty(Constants.UPLOAD_XLS_VENDOR_CONFIG));
+			hm.put(Constants.UPLOAD_XLS_SERVICE_CENTER_CONFIG, prop.getProperty(Constants.UPLOAD_XLS_SERVICE_CENTER_CONFIG));
+			hm.put(Constants.UPLOAD_XLS_SERVICE_MEN_CONFIG, prop.getProperty(Constants.UPLOAD_XLS_SERVICE_MEN_CONFIG));
+			hm.put(Constants.APPLICATION_CONFIG, prop.getProperty(Constants.APPLICATION_CONFIG));
+			
 			logger.info("DB name:  "+hm.get(Constants.DB_NAME));
 			
 		}catch(FileNotFoundException fne){

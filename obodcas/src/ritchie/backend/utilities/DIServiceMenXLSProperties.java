@@ -16,7 +16,7 @@ public class DIServiceMenXLSProperties {
 		Properties prop = new Properties();
 		
 		try{
-			prop.load(new FileInputStream(Constants.UPLOAD_XLS_SERVICE_MEN_CONFIG));
+			prop.load(new FileInputStream(ApplicationProperties.hm.get(Constants.UPLOAD_XLS_SERVICE_MEN_CONFIG)));
 			
 			hm.put(Constants.SEPARATOR, prop.getProperty(Constants.SEPARATOR));
 			hm.put(Constants.FIELDS, prop.getProperty(Constants.FIELDS));
