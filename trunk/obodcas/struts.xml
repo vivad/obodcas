@@ -11,6 +11,9 @@
 		<interceptors>
 			<interceptor name="CacheInterceptor"
 				class="ritchie.backend.interceptor.CacheInterceptor"></interceptor>
+			<interceptor name="TemplateRenameInterceptor"
+				class="ritchie.backend.interceptor.TemplateRenameInterceptor"></interceptor>
+				
 			<interceptor-stack name="StackForAllActoins">
 				<interceptor-ref name="defaultStack" />
 				<interceptor-ref name="CacheInterceptor" />
@@ -18,6 +21,14 @@
 			<interceptor-stack name="FileUploadStack">
 				<interceptor-ref name="fileUpload">
 					<param name="allowedTypes">application/vnd.ms-excel</param>
+					<param name="maximumSize">4359000</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+			<interceptor-stack name="TemplateUploadStack">
+				<interceptor-ref name="TemplateRenameInterceptor" />
+				<interceptor-ref name="fileUpload">
+					<param name="allowedTypes">text/html,text/htm</param>
 					<param name="maximumSize">4359000</param>
 				</interceptor-ref>
 				<interceptor-ref name="defaultStack" />
@@ -114,9 +125,79 @@
 			<result>/pages/dataimport.jsp</result>
 		</action>
 		
-		<action name="templateengine">
-			<result>/pages/templateengine.jsp</result>
+		<action name="templateengine" class="ritchie.backend.action.TemplateEngineAction">
+			<interceptor-ref name="StackForAllActoins" />
+			<result name="SUCCESS">/pages/templateengine.jsp</result>
 		</action>
+		
+		<action name="teenrolltemplate" class="ritchie.backend.action.TETemplateUploadAction">
+			<interceptor-ref name="TemplateUploadStack" />
+			<result name="input">/pages/templateengine.jsp</result>
+			<result name="error">/pages/templateengine.jsp</result>
+			<result name="SUCCESS">/pages/templateengine.jsp</result>
+		</action>
+		
+		<action name="teextractpattern" class="ritchie.backend.action.TEExtractPatternAction">
+			<result name="input">/pages/templateengine.jsp</result>
+			<result name="error">/pages/templateengine.jsp</result>
+			<result name="SUCCESS">/pages/templateengine.jsp</result>
+		</action>
+		
+		<action name="temanagetemplate" class="ritchie.backend.action.TEManageTemplateAction">
+			<result name="input">/pages/templateengine.jsp</result>
+			<result name="error">/pages/templateengine.jsp</result>
+			<result name="SUCCESS">/pages/templateengine.jsp</result>
+		</action>
+		
+		<action name="temapdata" class="ritchie.backend.action.TEMapDataAction">
+			<result name="input">/pages/templateengine.jsp</result>
+			<result name="error">/pages/templateengine.jsp</result>
+			<result name="SUCCESS">/pages/templateengine.jsp</result>
+		</action>
+		
+		<action name="getDBTableColumnNamesAjax" class="ritchie.backend.action.GetDBTableColumnNamesAction">
+            <result type="stream">
+                <param name="contentType">text/xml; charset=UTF-8</param>
+                <param name="inputName">inputStream</param>
+            </result>
+        </action>
+        
+        <action name="assigndatapatternAjax" class="ritchie.backend.action.TEAssignDataPatternsAction">
+        	<result type="stream">
+                <param name="contentType">text/xml; charset=UTF-8</param>
+                <param name="inputName">inputStream</param>
+            </result>
+        </action>
+        
+        <action name="tegeneratepages" class="ritchie.backend.action.TEGeneratePageAction">
+        	<!-- <interceptor-ref name="token"/> -->
+			<result name="input">/pages/templateengine.jsp</result>
+			<result name="error">/pages/templateengine.jsp</result>
+			<result name="SUCCESS">/pages/templateengine.jsp</result>
+			<result name="validate" type="stream">
+				<param name="contentType">text/html; charset=UTF-8</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename=${filename}</param>
+				<param name="bufferSize">4359000</param>
+				/pages/templateengine.jsp</result>
+			<result name="viewpage" type="stream">
+				<param name="contentType">text/html; charset=UTF-8</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename=${filename}</param>
+				<param name="bufferSize">4359000</param>
+				/pages/templateengine.jsp</result>
+		</action>
+		
+		
+		<action name="tevalidatepageAjax" class="ritchie.backend.action.TEValidatePageAction">
+        	<result name="SUCCESS" type="stream">
+                <param name="contentType">text/html; charset=UTF-8</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename=${filename}</param>
+				<param name="bufferSize">4359000</param>
+            </result>
+        </action>
+
 
 		<action name="managepages">
 			<result>/pages/managepages.jsp</result>
