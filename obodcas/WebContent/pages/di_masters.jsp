@@ -16,25 +16,13 @@
 <s:head />
 </head>
 
-<div class="errorDiv">
-<s:if test="actionName=='diareamaster'">
-	<s:actionmessage />
-	<s:actionerror />
-</s:if>
-<s:if test="actionName=='divendortypemaster'">
-	<s:actionmessage />
-	<s:actionerror />
-</s:if>
-<s:if test="actionName=='diservicetypemaster'">
-	<s:actionmessage />
-	<s:actionerror />
-</s:if>
-					<s:if test="actionName=='diservicementypemaster'">
-						<s:actionmessage />
-						<s:actionerror />
-					</s:if>
-</div>
+
 <div class="baseDiv">
+
+<div class="errorDiv">
+	<s:actionmessage />
+	<s:actionerror />
+</div>
 
 <div class="leftDiv">
 

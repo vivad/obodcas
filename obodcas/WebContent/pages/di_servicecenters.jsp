@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="/ritchie_backend/css/di_upload.css" title="1024px style" media="screen,projection">
 </head>
 
+<div class="baseDiv">
 <div class="title_box">Bulk Upload</div>
 
 <s:if test="actionName=='diservicecentersupload'">
@@ -199,3 +200,6 @@
 		</tr>
 	</table>
 </s:form>
+</div>
+
+
