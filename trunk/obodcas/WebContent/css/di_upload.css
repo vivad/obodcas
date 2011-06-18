@@ -1,10 +1,12 @@
+.baseDiv{align:center;width:1200px;margin:5px 5px;}
 .title_box {
 	background: #ead4ff;
 	border: 1px solid black;
-	width: 970px;
+	width: 1190px;
 	height: 6px;
+	//padding: 10px 5px;
 	padding: 20px;
-	margin: 8px;
+	margin: 0 0 5px 0;
 	text-align: center;
 	text-decoration: underline;
 	font-weight: bold;
@@ -18,12 +20,12 @@
 
 .upload_form {
 	background: #ead4ff;
-	margin: 0 6px;
+	margin: 0 0 5px 0;
 	border: 1px solid black;
-	width: 1000px;
+	width: 1190px;
 	height: 250px;
-	padding: 0px 5px;
-	margin: 8px;
+	padding: 20px;
+
 }
 
 .button {
@@ -65,10 +67,10 @@ table.file_list th {
 
 .dataentry_form {
 	background: #ead4ff;
-	margin: 0 6px;
+	margin: 0 0 5px 0;
 	border: 1px solid black;
-	width: 1000px;
+	width: 1190px;
 	height: 350px;
-	padding: 0px 5px;
-	margin: 8px;
+	padding: 20px;
+
 }

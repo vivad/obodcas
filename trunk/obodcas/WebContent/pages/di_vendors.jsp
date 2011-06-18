@@ -9,6 +9,8 @@
 	media="screen,projection" />
 </head>
 
+<div class="baseDiv">
+
 <div class="title_box">Bulk Upload</div>
 
 <s:if test="actionName=='divendorsupload'">
@@ -179,7 +181,7 @@
 					<td><s:label>Search Vendor</s:label></td>
 					<td colspan="2"><s:textfield name="vendoridforsearch">
 					</s:textfield></td>
-					<td><s:submit value="Search" name="searchbutton" /></td>
+					<td><s:submit value="Search" name="searchbutton"/></td>
 				</tr>
 				<tr>
 					<td colspan="4">
@@ -200,3 +202,4 @@
 		</tr>
 	</table>
 </s:form>
+</div>

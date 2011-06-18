@@ -7,6 +7,8 @@
 <link rel="stylesheet" type="text/css" href="/ritchie_backend/css/di_upload.css" title="1024px style" media="screen,projection">
 </head>
 
+<div class="baseDiv">
+
 <div class="title_box">Bulk Upload</div>
 
 <s:if test="actionName=='diservicemenupload'">
@@ -151,6 +153,9 @@
 					</td>
 				</tr>
 				<tr>
+					<td><s:label>Service Enrolled</s:label></td>
+					<td><s:select name="serviceenrolledstatus"
+						list="{'No','Yes'}" /></td>
 					<td><s:label>Active</s:label></td>
 					<td><s:select name="activestatus" list="{'Yes','No'}" />
 					</td>
@@ -180,3 +185,4 @@
 		</tr>
 	</table>
 </s:form>
+</div>
