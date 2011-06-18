@@ -43,6 +43,7 @@ public class DIServiceMenDataEntryAction extends ActionSupport implements
 	private String address;
 	private String mapdata;
 	private String telephone;
+	private String serviceenrolledstatus;
 	private String activestatus;
 	private String idforsearch;
 
@@ -159,6 +160,14 @@ public class DIServiceMenDataEntryAction extends ActionSupport implements
 
 	public void setMapdata(String mapdata) {
 		this.mapdata = mapdata;
+	}
+
+	public String getServiceenrolledstatus() {
+		return serviceenrolledstatus;
+	}
+
+	public void setServiceenrolledstatus(String serviceenrolledstatus) {
+		this.serviceenrolledstatus = serviceenrolledstatus;
 	}
 
 	public String getActivestatus() {
@@ -305,6 +314,8 @@ public class DIServiceMenDataEntryAction extends ActionSupport implements
 					.get(DIServiceMenXLSConstants.EMAIL_ID_2));
 			setWebsite(serviceMenDetails
 					.get(DIServiceMenXLSConstants.WEBSITE));
+			setServiceenrolledstatus(serviceMenDetails
+					.get(DIServiceMenXLSConstants.ENROLLED));
 			setActivestatus(serviceMenDetails
 					.get(DIServiceMenXLSConstants.ACTIVE));
 		} else {
@@ -388,6 +399,7 @@ public class DIServiceMenDataEntryAction extends ActionSupport implements
 			logger.info("address:  " + address);
 			logger.info("mapdata:  " + mapdata);
 			logger.info("telephone:  " + telephone);
+			logger.info("serviceenrolledstatus:  " + serviceenrolledstatus);
 			logger.info("activestatus:  " + activestatus);
 			logger.info("idforsearch:  " + idforsearch);
 			
@@ -408,7 +420,9 @@ public class DIServiceMenDataEntryAction extends ActionSupport implements
 			map.put(DIServiceMenXLSConstants.EMAIL_ID_1, getEmail1());
 			map.put(DIServiceMenXLSConstants.EMAIL_ID_2, getEmail2());
 			map.put(DIServiceMenXLSConstants.WEBSITE, getWebsite());
+			map.put(DIServiceMenXLSConstants.ENROLLED,getServiceenrolledstatus());
 			map.put(DIServiceMenXLSConstants.ACTIVE,getActivestatus());
+			
 
 			DIServiceMenDataEntryDAO dao = new DIServiceMenDataEntryDAO();
 			
