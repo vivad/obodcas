@@ -17,6 +17,7 @@ public class DIXLSUploadUtil {
 	private static Logger logger = Logger.getLogger(DIXLSUploadUtil.class);
 	public void copyFile(File src, File dst) throws IOException {
 		logger.info("in copyFile method");
+		logger.info("Target Path: "+dst);
 		InputStream in = new FileInputStream(src);
 		OutputStream out = new FileOutputStream(dst);
 
@@ -28,6 +29,26 @@ public class DIXLSUploadUtil {
 		}
 		in.close();
 		out.close();
+	}
+	
+	public boolean renameFile(String src,String newName) throws IOException {
+		logger.info("in copyFile method");
+		
+		logger.info("src:  "+src);
+		logger.info("newName:  "+newName);
+		
+		File oldfile = new File(src);
+
+		if (!oldfile.exists()) {
+			System.out.println("File or directory does not exist.");
+		}else{
+			File newfile = new File(newName);
+			logger.info("Old File or directory name : " + oldfile);
+			logger.info("New File or directory name : " + newfile);
+			return oldfile.renameTo(newfile);
+		}
+		
+		return false;
 	}
 	
 	public boolean deleteFile(File file) throws IOException {
