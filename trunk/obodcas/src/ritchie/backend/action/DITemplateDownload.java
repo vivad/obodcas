@@ -7,6 +7,9 @@ import java.io.InputStream;
 
 import org.apache.log4j.Logger;
 
+import ritchie.backend.utilities.ApplicationProperties;
+import ritchie.backend.utilities.Constants;
+
 public class DITemplateDownload {
 	private static Logger logger = Logger.getLogger(DITemplateDownload.class);
 	private InputStream inputStream;
@@ -36,7 +39,7 @@ public class DITemplateDownload {
 	public void setPagename(String pagename) {
 		this.pagename = pagename;
 	}
-
+	
 	public String execute() throws FileNotFoundException{
 		logger.info("inside DITemplateDownload class");
 		try{
@@ -44,13 +47,13 @@ public class DITemplateDownload {
 			String filePathName = null;
 			if(getPagename().equals("vendors")){
 				fileName = "Vendor_Template.xls";
-				filePathName = "E:/delightpeople/ritchie/sample files/vendor/template/Vendor_Template.xls";
+				filePathName = ApplicationProperties.hm.get(Constants.VENDOR_XLS_TEMPLATE);
 			}else if(getPagename().equals("servicecenters")){
 				fileName = "Service_Center_Template.xls";
-				filePathName = "E:/delightpeople/ritchie/sample files/service center/template/Service_Center_Template.xls";
+				filePathName = ApplicationProperties.hm.get(Constants.SERVICE_CENTER_XLS_TEMPLATE);
 			}else if(getPagename().equals("servicemen")){
 				fileName = "Service_Men_Template.xls";
-				filePathName = "E:/delightpeople/ritchie/sample files/service men/template/Service_Men_Upload_Template.xls";
+				filePathName = ApplicationProperties.hm.get(Constants.SERVICE_MEN_XLS_TEMPLATE);
 			}
 			
 			logger.info("fileName:  "+fileName);

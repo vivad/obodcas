@@ -378,7 +378,7 @@ public class TEGeneratePageAction extends ActionSupport implements SessionAware,
 			String destFileName = "";
 			
 			if(validateFlag == true){
-				destFileName = Constants.TE_TEMPLATE_VALIDATE_PATH + "/" + enrollmentID+".html";
+				destFileName = ApplicationProperties.hm.get(Constants.TE_TEMPLATE_VALIDATE_PATH) + "/" + enrollmentID+".html";
 				writePage(category,enrollmentID,destFileName);
 				setFilename(enrollmentID+".html");
 				setInputStream(new FileInputStream(new File(destFileName)));
@@ -386,7 +386,7 @@ public class TEGeneratePageAction extends ActionSupport implements SessionAware,
 			}
 			
 			if(generateFlag == true){
-				destFileName = Constants.TE_TEMPLATE_GENERATE_PATH + "/" + enrollmentID+".html";
+				destFileName = ApplicationProperties.hm.get(Constants.TE_TEMPLATE_GENERATE_PATH) + "/" + enrollmentID+".html";
 				try{
 					writePage(category,enrollmentID,destFileName);
 				}catch(IOException e){
@@ -404,7 +404,7 @@ public class TEGeneratePageAction extends ActionSupport implements SessionAware,
             	}else if(status == 0){
             		addActionError("Page Not Generated. Please generate the page.");
             	}else if(status == 1){
-            		destFileName = Constants.TE_TEMPLATE_GENERATE_PATH + "/" + enrollmentID+".html";
+            		destFileName = ApplicationProperties.hm.get(Constants.TE_TEMPLATE_GENERATE_PATH) + "/" + enrollmentID+".html";
             		setFilename(enrollmentID+".html");
     				setInputStream(new FileInputStream(new File(destFileName)));
     				return "viewpage";

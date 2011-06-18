@@ -20,6 +20,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import ritchie.backend.dao.TEManageTemplateDAO;
 import ritchie.backend.dao.TETemplateDetailsDAO;
+import ritchie.backend.utilities.ApplicationProperties;
 import ritchie.backend.utilities.Constants;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -168,7 +169,7 @@ public class TEExtractPatternAction extends ActionSupport implements
 			return ERROR;
 		}else{
 			logger.info("getTemplateno():  "+getTemplateno());
-			String targetFolder = Constants.TE_TEMPLATE_UPLOAD_DEST;
+			String targetFolder = ApplicationProperties.hm.get(Constants.TE_TEMPLATE_UPLOAD_DEST);
 			String fileName = targetFolder + "/" + getTemplateno()+".html";
 			setKeynames(extractPatterns(fileName));
 			

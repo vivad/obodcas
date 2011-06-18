@@ -16,10 +16,9 @@ public class Constants {
 	public static final String TE_MANAGE_TEMPLATE_LINK_NAME = "Manage Template";
 	public static final String TE_MAP_DATA_LINK_NAME = "Map Data";
 	public static final String TE_GENERATE_PAGE_LINK_NAME = "Generate Pages";
-	public static final String TE_TEMPLATE_UPLOAD_SRC = "E:/delightpeople/ritchie/Template Upload/src";
-	public static final String TE_TEMPLATE_UPLOAD_DEST = "E:/delightpeople/ritchie/Template Upload/uploadedtemplate";
-	public static final String TE_TEMPLATE_VALIDATE_PATH = "E:/delightpeople/ritchie/Template Upload/validatedpages";
-	public static final String TE_TEMPLATE_GENERATE_PATH = "E:/delightpeople/ritchie/Template Upload/generatedpages";
+	public static final String TE_TEMPLATE_UPLOAD_DEST = "TE_TEMPLATE_UPLOAD_DEST";
+	public static final String TE_TEMPLATE_VALIDATE_PATH = "TE_TEMPLATE_VALIDATE_PATH";
+	public static final String TE_TEMPLATE_GENERATE_PATH = "TE_TEMPLATE_GENERATE_PATH";
 	public static final String TE_TEMPLATE_UPLOADED_INPROGRESS_STATUS = "In progress";
 	public static final String TE_TEMPLATE_UPLOADED_COMPLETED_STATUS = "Uploaded";
 	
@@ -29,9 +28,15 @@ public class Constants {
 	public static final String UPLOAD_TYPE_SERVICE_MEN = "SM";
 	public static final String UPLOAD_XLS_SRC = "E:/delightpeople/ritchie/fileupload";
 	public static final String UPLOAD_XLS_DEST = "E:/delightpeople/ritchie/fileuploadnew";
-	public static final String UPLOAD_XLS_VENDOR_CONFIG = "E:/delightpeople/ritchie/config/vendorconfig.properties";
-	public static final String UPLOAD_XLS_SERVICE_CENTER_CONFIG = "E:/delightpeople/ritchie/config/servicecentersconfig.properties";
-	public static final String UPLOAD_XLS_SERVICE_MEN_CONFIG = "E:/delightpeople/ritchie/config/servicemenconfig.properties";
+	public static final String UPLOAD_XLS_VENDOR_CONFIG = "UPLOAD_XLS_VENDOR_CONFIG";
+	public static final String UPLOAD_XLS_SERVICE_CENTER_CONFIG = "UPLOAD_XLS_SERVICE_CENTER_CONFIG";
+	public static final String UPLOAD_XLS_SERVICE_MEN_CONFIG = "UPLOAD_XLS_SERVICE_MEN_CONFIG";
+	
+	public static final String VENDOR_XLS_TEMPLATE = "VENDOR_XLS_TEMPLATE";
+	public static final String SERVICE_CENTER_XLS_TEMPLATE = "SERVICE_CENTER_XLS_TEMPLATE";
+	public static final String SERVICE_MEN_XLS_TEMPLATE = "SERVICE_MEN_XLS_TEMPLATE";
+	
+	
 	public static final String APPLICATION_CONFIG = "E:/delightpeople/ritchie/config/applicationconfig.properties";
 	public static final String UPLOADED_XLS_INPROGRESS_STATUS = "In progress";
 	public static final String UPLOADED_XLS_COMPLETED_STATUS = "Completed";
