@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import ritchie.backend.dao.DBConnection;
+import ritchie.backend.utilities.ApplicationProperties;
 import ritchie.backend.utilities.DIServiceCentersXLSProperties;
 import ritchie.backend.utilities.DIServiceMenXLSProperties;
 import ritchie.backend.utilities.DIVendorsUploadXLSProperties;
@@ -16,6 +17,7 @@ public class LoadInitialConfiguration extends HttpServlet{
 	public void init(){
 		logger.info("Start loading initial configurations");
 		new DBConnection();
+		new ApplicationProperties();
 		new DIVendorsUploadXLSProperties();
 		new DIServiceCentersXLSProperties();
 		new DIServiceMenXLSProperties();
