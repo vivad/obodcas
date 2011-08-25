@@ -1,0 +1,53 @@
+<project name="ritchie_backend" default="deploy" basedir=".">
+	<property name="BuildDir" value="${basedir}/build"/>
+	<property name="SrcDir" value="${basedir}/src"></property>
+	<property name="WebContent" value="${basedir}/WebContent"/>
+	<property name="Classses" value="${WebContent}/WEB-INF/classes"/>
+	<property name="TomcatHome" value="E:\mangai\d-mangai\apache-tomcat-5.5.27"/>
+	
+	<property name="TomcatLib" value="${TomcatHome}/common/lib"/>
+	<property name="TomcatDeploy" value="${TomcatHome}/webapps"/>
+	<property name="AppLib" value="${basedir}/lib"/>
+
+	<delete file="${TomcatDeploy}/${ant.project.name}.war"></delete>
+	<delete dir="${TomcatDeploy}/${ant.project.name}"></delete>
+	<delete dir="${Classses}"></delete>
+	<mkdir dir="${BuildDir}"/>
+	<mkdir dir="${Classses}"/>
+	<mkdir dir="${WebContent}/WEB-INF/lib"/>
+	
+	<path id="ClassPath">
+		<!--<fileset dir="${TomcatLib}" includes="*.jar"/>-->
+		<fileset dir="${AppLib}" includes="*.jar"/>
+	</path>
+	
+	<target name="compile">
+		<javac srcdir="${SrcDir}" destdir="${Classses}">
+			<classpath refid="ClassPath"></classpath>
+		</javac>
+	</target>
+	
+	<!--<target name="CreateWar" depends="compile">
+		<jar destfile="${BuildDir}/CSV.war">
+			<fileset dir="${WebContent}"></fileset>
+		</jar>
+	</target> 	
+	
+	<target name="deploy">
+		<copy todir="${TomcatDeploy}">
+			<fileset dir="${BuildDir}" includes="CSV.war"></fileset>
+		</copy>
+	</target>-->
+	
+	<target name="deploy" depends="compile">
+		<copy file="${basedir}/struts.xml" todir="${Classses}"/>
+
+			<copy todir="${WebContent}/WEB-INF/lib">				
+				<fileset dir="${AppLib}" includes="*.jar"></fileset>
+			</copy>
+			<jar destfile="${TomcatDeploy}/${ant.project.name}.war">		
+				<fileset dir="${WebContent}"></fileset>
+			</jar>
+		</target> 
+	
+</project>
