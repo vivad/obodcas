@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.multipart.saveDir" value="E:/delightpeople/ritchie/fileupload" />
+	<constant name="struts.multipart.maxSize" value="4359000" />
+
+	<package name="ritchie_backend" extends="struts-default">
+		<interceptors>
+			<interceptor name="CacheInterceptor"
+				class="ritchie.backend.interceptor.CacheInterceptor"></interceptor>
+			<interceptor name="TemplateRenameInterceptor"
+				class="ritchie.backend.interceptor.TemplateRenameInterceptor"></interceptor>
+				
+			<interceptor-stack name="StackForAllActoins">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="CacheInterceptor" />
+			</interceptor-stack>
+			<interceptor-stack name="FileUploadStack">
+				<interceptor-ref name="fileUpload">
+					<param name="allowedTypes">application/vnd.ms-excel</param>
+					<param name="maximumSize">4359000</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+			<interceptor-stack name="TemplateUploadStack">
+				<interceptor-ref name="TemplateRenameInterceptor" />
+				<interceptor-ref name="fileUpload">
+					<param name="allowedTypes">text/html,text/htm</param>
+					<param name="maximumSize">4359000</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<action name="logout" class="ritchie.backend.action.LogOutAction">
+			<result>login.jsp</result>
+		</action>
+
+		<action name="dataimport" class="ritchie.backend.action.DataImportAction">
+			<interceptor-ref name="StackForAllActoins" />
+			<result name="SUCCESS">/pages/dataimport.jsp</result>
+		</action>
+
+		<action name="diareamaster" class="ritchie.backend.action.DIAreaMasterAction">
+			<interceptor-ref name="StackForAllActoins" />
+			<result name="input">/pages/dataimport.jsp</result>
+			<result name="error">/pages/dataimport.jsp</result>
+			<result>/pages/dataimport.jsp</result>
+		</action>
+
+		<action name="divendortypemaster" class="ritchie.backend.action.DIVendorTypeMasterAction">
+			<interceptor-ref name="StackForAllActoins" />
+			<result name="input">/pages/dataimport.jsp</result>
+			<result name="error">/pages/dataimport.jsp</result>
+			<result>/pages/dataimport.jsp</result>
+		</action>
+
+		<action name="diservicetypemaster" class="ritchie.backend.action.DIServiceTypeMasterAction">
+			<result name="input">/pages/dataimport.jsp</result>
+			<result name="error">/pages/dataimport.jsp</result>
+			<result>/pages/dataimport.jsp</result>
+		</action>
+
+		<action name="diservicementypemaster"
+			class="ritchie.backend.action.DIServiceMenTypeMasterAction">
+			<result name="input">/pages/dataimport.jsp</result>
+			<result name="error">/pages/dataimport.jsp</result>
+			<result>/pages/dataimport.jsp</result>
+		</action>
+
+		<action name="divendorsupload" class="ritchie.backend.action.DIVendorsUploadAction">
+			<interceptor-ref name="FileUploadStack" />
+			<result name="input">/pages/dataimport.jsp</result>
+			<result name="ERROR">/pages/dataimport.jsp</result>
+			<result name="SUCCESS">/pages/dataimport.jsp</result>
+		</action>
+
+		<action name="diservicecentersupload"
+			class="ritchie.backend.action.DIServiceCentersUploadAction">
+			<interceptor-ref name="FileUploadStack" />
+			<result name="input">/pages/dataimport.jsp</result>
+			<result name="ERROR">/pages/dataimport.jsp</result>
+			<result name="SUCCESS">/pages/dataimport.jsp</result>
+		</action>
+
+		<action name="diservicemenupload" class="ritchie.backend.action.DIServiceMenUploadAction">
+			<interceptor-ref name="FileUploadStack" />
+			<result name="input">/pages/dataimport.jsp</result>
+			<result name="ERROR">/pages/dataimport.jsp</result>
+			<result name="SUCCESS">/pages/dataimport.jsp</result>
+		</action>
+
+		<action name="ditemplatedownload" class="ritchie.backend.action.DITemplateDownload">
+			<result name="input">/pages/dataimport.jsp</result>
+			<result name="ERROR">/pages/dataimport.jsp</result>
+			<!-- <result name="SUCCESS">/pages/dataimport.jsp</result> -->
+			<result name="SUCCESS" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename=${filename}</param>
+				<param name="bufferSize">14336</param>
+				/pages/dataimport.jsp
+			</result>
+		</action>
+
+		<action name="divendordataentry" class="ritchie.backend.action.DIVendorDataEntryAction">
+			<result name="input">/pages/dataimport.jsp</result>
+			<result name="error">/pages/dataimport.jsp</result>
+			<result>/pages/dataimport.jsp</result>
+		</action>
+		
+		<action name="diservicecenterdataentry" class="ritchie.backend.action.DIServiceCenterDataEntryAction">
+			<result name="input">/pages/dataimport.jsp</result>
+			<result name="error">/pages/dataimport.jsp</result>
+			<result>/pages/dataimport.jsp</result>
+		</action>
+		
+		
+		<action name="diservicemendataentry" class="ritchie.backend.action.DIServiceMenDataEntryAction">
+			<result name="input">/pages/dataimport.jsp</result>
+			<result name="error">/pages/dataimport.jsp</result>
+			<result>/pages/dataimport.jsp</result>
+		</action>
+		
+		<action name="templateengine" class="ritchie.backend.action.TemplateEngineAction">
+			<interceptor-ref name="StackForAllActoins" />
+			<result name="SUCCESS">/pages/templateengine.jsp</result>
+		</action>
+		
+		<action name="teenrolltemplate" class="ritchie.backend.action.TETemplateUploadAction">
+			<interceptor-ref name="TemplateUploadStack" />
+			<result name="input">/pages/templateengine.jsp</result>
+			<result name="error">/pages/templateengine.jsp</result>
+			<result name="SUCCESS">/pages/templateengine.jsp</result>
+		</action>
+		
+		<action name="teextractpattern" class="ritchie.backend.action.TEExtractPatternAction">
+			<result name="input">/pages/templateengine.jsp</result>
+			<result name="error">/pages/templateengine.jsp</result>
+			<result name="SUCCESS">/pages/templateengine.jsp</result>
+		</action>
+		
+		<action name="temanagetemplate" class="ritchie.backend.action.TEManageTemplateAction">
+			<result name="input">/pages/templateengine.jsp</result>
+			<result name="error">/pages/templateengine.jsp</result>
+			<result name="SUCCESS">/pages/templateengine.jsp</result>
+		</action>
+		
+		<action name="temapdata" class="ritchie.backend.action.TEMapDataAction">
+			<result name="input">/pages/templateengine.jsp</result>
+			<result name="error">/pages/templateengine.jsp</result>
+			<result name="SUCCESS">/pages/templateengine.jsp</result>
+		</action>
+		
+		<action name="getDBTableColumnNamesAjax" class="ritchie.backend.action.GetDBTableColumnNamesAction">
+            <result type="stream">
+                <param name="contentType">text/xml; charset=UTF-8</param>
+                <param name="inputName">inputStream</param>
+            </result>
+        </action>
+        
+        <action name="assigndatapatternAjax" class="ritchie.backend.action.TEAssignDataPatternsAction">
+        	<result type="stream">
+                <param name="contentType">text/xml; charset=UTF-8</param>
+                <param name="inputName">inputStream</param>
+            </result>
+        </action>
+        
+        <action name="tegeneratepages" class="ritchie.backend.action.TEGeneratePageAction">
+        	<!-- <interceptor-ref name="token"/> -->
+			<result name="input">/pages/templateengine.jsp</result>
+			<result name="error">/pages/templateengine.jsp</result>
+			<result name="SUCCESS">/pages/templateengine.jsp</result>
+			<result name="validate" type="stream">
+				<param name="contentType">text/html; charset=UTF-8</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename=${filename}</param>
+				<param name="bufferSize">4359000</param>
+				/pages/templateengine.jsp</result>
+			<result name="viewpage" type="stream">
+				<param name="contentType">text/html; charset=UTF-8</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename=${filename}</param>
+				<param name="bufferSize">4359000</param>
+				/pages/templateengine.jsp</result>
+		</action>
+		
+		
+		<action name="tevalidatepageAjax" class="ritchie.backend.action.TEValidatePageAction">
+        	<result name="SUCCESS" type="stream">
+                <param name="contentType">text/html; charset=UTF-8</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename=${filename}</param>
+				<param name="bufferSize">4359000</param>
+            </result>
+        </action>
+
+
+		<action name="managepages">
+			<result>/pages/managepages.jsp</result>
+		</action>
+
+		<action name="managedata">
+			<result>/pages/managedata.jsp</result>
+		</action>
+
+		<action name="managestaff">
+			<result>/pages/managestaff.jsp</result>
+		</action>
+		<action name="manageschemes">
+			<result>/pages/manageschemes.jsp</result>
+		</action>
+		<action name="mailer">
+			<result>/pages/mailer.jsp</result>
+		</action>
+		<action name="stat">
+			<result>/pages/stat.jsp</result>
+		</action>
+		<action name="settings">
+			<result>/pages/settings.jsp</result>
+		</action>
+
+		<action name="reports">
+			<result>/pages/reports.jsp</result>
+		</action>
+
+		<action name="welcome" class="ritchie.backend.action.WelcomeUserAction">
+			<result name="input">login.jsp</result>
+			<result name="error">login.jsp</result>
+			<result>/pages/dataimport.jsp</result>
+		</action>
+
+	</package>
+
+	<package name="ajax" extends="json-default">
+		<action name="divendorgetarea" class="ritchie.backend.action.DIVendorGetAreaAction">
+			<result type="json" />
+			<param name="root">json</param>
+		</action>
+
+		<action name="divendorgetvendortype"
+			class="ritchie.backend.action.DIVendorGetVendorTypeAction">
+			<result type="json" />
+			<param name="root">json</param>
+		</action>
+		
+		<action name="diservicecentergetservicecentertype"
+			class="ritchie.backend.action.DIServiceCenterGetServiceCenterTypeAction">
+			<result type="json" />
+			<param name="root">json</param>
+		</action>
+		
+		<action name="diservicemengetservicementype"
+			class="ritchie.backend.action.DIServiceMenGetServiceMenTypeAction">
+			<result type="json" />
+			<param name="root">json</param>
+		</action>
+	</package>
+
+</struts>

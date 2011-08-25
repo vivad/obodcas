@@ -1,0 +1,21 @@
+.baseDiv{align:center;width:1200px;margin:0 5px;}
+.leftDiv{float:left; width:500px;margin:5px 5px 0 0;}
+.rightDiv{float:left;width:570px;margin:5px 0 0 5px;}
+.errorDiv{width:500px;margin:auto;}
+
+.master_areaform{height:90px; background:#ead4ff; border:1px solid #000; padding:5px 0 5px 0;}
+.other_form{height:55px; background:#ead4ff; border:1px solid #000; margin:0 0 5px 0;clear:both;padding:5px 0 5px 0;}
+.servicemen_form{height:55px; background:#ead4ff; border:1px solid #000; margin:0 0 5px 0;clear:both;padding:5px 0 5px 0;}
+
+dl{clear:both; margin:5px;}
+dt{float:left;width:30px}
+dd{width:440px;}
+.other_form dt{float:left;width:115px;}
+.servicemen_form dt{float:left;width:115px;}
+.servicemen{width:290px;}
+dd input{width:290px;}
+.reset{width:55px;border:none;background:#D6ADEB;}
+.save{width:55px;border:none;background:#D6ADEB;}
+.approval{width:175px;border:none;background:#D6ADEB;}
+span{margin:5px}
+span.space{}

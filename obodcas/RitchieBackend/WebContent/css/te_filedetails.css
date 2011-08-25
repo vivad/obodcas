@@ -1,0 +1,85 @@
+.title_box {
+	background: #ead4ff;
+	border: 1px solid black;
+	width: 930px;
+	height: 30px;
+	padding: 10px 40px;
+	margin: 9px 0px 0px 0px;
+}
+
+.title_box table {
+	width: 500px;
+}
+
+.errorMsgDiv {
+	width: 500px;
+	margin: 5px auto;
+}
+
+.upload_form {
+	margin: 0px;
+	width: 1010px;
+	height: 60px;
+	padding: 0px 5px;
+}
+
+.file_list_display_form {
+	margin: 0px;
+	width: 1010px;
+	height: 210px;
+	padding: 0px 5px;
+}
+
+.button {
+	width: 55px;
+	border: none;
+	background: #D6ADEB;
+	margin: 0 5px;
+}
+
+.template {
+	text-decoration: underline;
+	float: right;
+	border: none;
+}
+
+table.file_list {
+	border-collapse: collapse;
+	boder-spacing: 0px;
+	width: 1012px;
+	margin: 9px 0px 0px 0px;
+}
+
+table.file_list td {
+	border: 1px solid black;
+	padding: 3px;
+}
+
+table.file_list th {
+	border: 1px solid black;
+	background: #FFFF00;
+}
+
+.extractpatterns {
+	width: 150px;
+	border: none;
+	background: #D6ADEB;
+	float: right;
+	margin: 9px 0px 0px 0px;
+}
+
+.activebutton {
+	width: 100px;
+	border: none;
+	background: #D6ADEB;
+	float: right;
+	margin: 9px 9px 0px 0px;
+}
+
+.inactivebutton {
+	width: 100px;
+	border: none;
+	background: #D6ADEB;
+	float: right;
+	margin: 9px 0px 0px 0px;
+}
